@@ -8,7 +8,9 @@ We **strongly encourage** a Youtube Premium account to avoid ads.
 
 It was also important to us to be able to curate his content more.
 Youtube Kids provided a very poor interface, extremely short videos, bad new content suggestions, and little variety in selection.
-It also limited us to a tablet as oppossed to TV. This level of empowerment allows him to learn at his own pace, with content we manually approve.
+It also limited us to a tablet as oppossed to TV. We feel a tablet removes him from his environment, where a TV has proven to keep him playing and learning. This level of empowerment allows him to learn at his own pace, with content we manually approve.
+
+You could also utilize for just music videos if you wanted. This can be extended to 
 
 [Roku ECP Docs](https://developer.roku.com/docs/developer-program/dev-tools/external-control-api.md)
 
