@@ -55,7 +55,7 @@ export default function Home() {
             backgroundPosition: 'center'
           }} key={index} onClick={() => handleClick(index)}>
             <div className="bg-blue-500/80 border-t-4 border-blue-700 px-3 py-1 flex flex-col justify-center content-center w-full">
-              <h2 className="text-center text-white text-md xl:text-3xl">{video[0]}</h2>
+              <h2 className="text-center text-white text-xs xl:text-3xl">{video[0]}</h2>
               <span className="text-center font-bold text-white hidden xl:text-xl xl:block">{video.length-1} Videos</span>             
             </div>
           </div>
