@@ -24,23 +24,19 @@ export default function Home() {
     setIsClassActive(true)
     setCountdown(15)
 
-    // Deactivate the class after 20 seconds
     setTimeout(() => {
       setIsClassActive(false);
-    }, 15000) // 20000 milliseconds = 20 seconds
+    }, 15000)
   
     try {
       const response = await fetch(`/api/?slug=${video}`, { method: 'POST' })
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
-      // Handle success
       console.log('Request sent successfully')
-
 
     } catch (error) {
       console.error('Error fetching data:', error)
-      // Handle error
     }
   }
 
