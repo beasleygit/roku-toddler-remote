@@ -24,3 +24,11 @@
     user-select: none;
   }
 }
+
+.no-touch .loading{
+  display: block;
+}
+
+.no-touch div {
+  display: none;
+}
