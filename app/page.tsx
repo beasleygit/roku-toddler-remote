@@ -1,29 +1,43 @@
-import { getSortedPostsData } from "@/lib/markdown"
-import Link from 'next/link'
+"use client"
+import { videos } from './posts/videos'
 
-async function getPosts() {
-  const allPostsData = getSortedPostsData()
+export default function Home() {
 
-  return allPostsData
-}
+  const handleClick = async (index) => {
+    const arrayLength = videos[index].length
+    const randomVid =  Math.floor(Math.random() * (arrayLength - 1)) + 1
+    const video = videos[index][randomVid]
+    console.log(video)
 
-export default async function Home() {
-  const allPostsData = await getPosts()
+    try {
+      const response = await fetch(`/api/?slug=${video}`, { method: 'POST' })
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      // Handle success
+      console.log('Request sent successfully')
+    } catch (error) {
+      console.error('Error fetching data:', error)
+      // Handle error
+    }
+  }
+
   return (
-    <main className="bg-blue-500 flex flex-col content-center flex-wrap">
-      <nav className="px-10 py-6 flex flex-row flex-wrap justify-between content-center bottom-b-2 bg-blue-600">
-        <h2 className="grow p-2 text-center text-white">THEO TV</h2>
-      </nav>
-      <div className="flex flex-row w-full flex-wrap mt-10 px-10">
-      { allPostsData.map((postData) =>
-        <Link href={`/blog/${postData.id}`} key={postData.id} className="hover:bg-blue-400 mx-3 rounded overflow-hidden">
-            <div className="p-3 flex flex-col justify-center content-center text-center">
-              <img className="rounded-full border-4 border-blue-300" src={postData.img} alt="test" />
-              <h3 className="mt-2 text-white">{postData.author}</h3>
+    <main className="bg-blue-500 flex flex-col content-center flex-wrap p-10">
+      <div className="grid grid-cols-4 gap-3 w-full">
+        {videos.map((video, index) => (
+          <div className="drop-shadow-lg flex justify-center content-end flex-wrap border-4 border-blue-700 rounded-xl aspect-square" style={{
+            backgroundImage: `url('${index}.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }} key={index} onClick={() => handleClick(index)}>
+            <div className="bg-blue-500/80 border-t-4 border-blue-700 px-3 py-1 flex flex-col justify-center content-center w-full">
+              <h2 className="text-center text-white text-md xl:text-3xl">{video[0]}</h2>
+              <span className="text-center font-bold text-white text-xs xl:text-xl">{video.length} Videos</span>             
             </div>
-        </Link> 
-      )}
+          </div>
+        ))}
       </div>
-    </main>    
+    </main>
   )
 }
